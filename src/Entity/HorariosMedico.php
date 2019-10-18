@@ -24,7 +24,7 @@ class HorariosMedico
     private $dia;
 
     /**
-     * @ORM\Column(type="time")
+     * @ORM\Column(type="string", length=11)
      */
     private $hora;
 
@@ -55,12 +55,12 @@ class HorariosMedico
         return $this;
     }
 
-    public function getHora(): ?\DateTimeInterface
+    public function getHora(): ?string
     {
         return $this->hora;
     }
 
-    public function setHora(\DateTimeInterface $hora): self
+    public function setHora(string $hora): self
     {
         $this->hora = $hora;
 
