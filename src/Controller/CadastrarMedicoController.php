@@ -23,7 +23,7 @@ class CadastrarMedicoController extends AbstractController
         $Medico= new Medico();
 
         $form = $this->createFormBuilder($Medico)                       //A Label precisa ser igual a variavel criada no DB no caso menome, dia1, dia2...
-            ->add('menome', TextType::class, ['label' => 'Nome'])  //Nome da coluna medico no DB
+            ->add('menome', TextType::class, ['label' => 'Nome Do Medico'])  //Nome da coluna medico no DB
             ->add('dia1', TextType::class, ['label' => 'Dia1'])   //As colunas de dia são refentes aos dias da semana que os medicos atendem
             ->add('dia2', TextType::class, ['label' => 'Dia2'])
             ->add('dia3', TextType::class, ['label' => 'Dia3'])
@@ -39,7 +39,7 @@ class CadastrarMedicoController extends AbstractController
                             'class' => HorariosMedico::class,
                             'choice_label' => 'hora',
                             'multiple' => 'true',
-                            'label' => 'HorariosMedico',
+                            'label' => 'Horario Medico',
                             ])
             ->add('confirme', SubmitType::class, ['label' => 'Cadastrar Medico'])
             ->getForm();
