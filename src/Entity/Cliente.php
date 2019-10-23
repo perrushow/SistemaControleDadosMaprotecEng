@@ -29,7 +29,7 @@ class Cliente
     private $telefone;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\planos", inversedBy="clientes_idclientes")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Planos", inversedBy="clientes_idclientes")
      */
     private $planos_idplanos;
 
