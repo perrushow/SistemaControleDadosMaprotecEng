@@ -23,12 +23,8 @@ class CadastrarMedicoController extends AbstractController
         $Medico= new Medico();
 
         $form = $this->createFormBuilder($Medico)                       //A Label precisa ser igual a variavel criada no DB no caso menome, dia1, dia2...
-            ->add('menome', TextType::class, ['label' => 'Nome Do Medico'])  //Nome da coluna medico no DB
-            ->add('dia1', TextType::class, ['label' => 'Dia1'])   //As colunas de dia são refentes aos dias da semana que os medicos atendem
-            ->add('dia2', TextType::class, ['label' => 'Dia2'])
-            ->add('dia3', TextType::class, ['label' => 'Dia3'])
-            ->add('dia4', TextType::class, ['label' => 'Dia4'])
-            ->add('dia5', TextType::class, ['label' => 'Dia5'])             //Coluna de medicos que puxa a tabela especialidade
+            ->add('menome', TextType::class, ['label' => 'Nome do Medico'])  //Nome da coluna medico no DB
+        //         //Coluna de medicos que puxa a tabela especialidade
             ->add('especialidade_idespecialidade', EntityType::class, [
                 'class' => Especialidade::class,
                 'choice_label' => 'esnome',
@@ -39,6 +35,7 @@ class CadastrarMedicoController extends AbstractController
                             'class' => HorariosMedico::class,
                             'choice_label' => 'hora',
                             'multiple' => 'true',
+                            'expanded' => 'true',
                             'label' => 'Horario Medico',
                             ])
             ->add('confirme', SubmitType::class, ['label' => 'Cadastrar Medico'])
@@ -49,7 +46,7 @@ class CadastrarMedicoController extends AbstractController
         if ($form->isSubmitted() && $form->isValid())
         {
             $Medico = $form->getData();
-            $entityManager = $this->getDoctrine()->getManager(); // Inseri no DB
+            $entityManager = $this->getDoctrine()->getManager();// Inseri no DB
             $entityManager->persist($Medico);
             $entityManager->flush();
 

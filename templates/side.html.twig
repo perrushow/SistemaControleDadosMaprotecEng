@@ -1,0 +1,68 @@
+<div class="sidebar sidebar-style-2">
+    <div class="sidebar-wrapper scrollbar scrollbar-inner">
+        <div class="sidebar-content">
+            <ul class="nav nav-primary">
+                {% if app.request.get('_route') == 'home' %}
+                <li class="nav-item active">
+                    {% else %}
+                <li class="nav-item">
+                    {% endif %}
+                    <a href="{{ path('home') }}">
+                        <i class="fas fa-home"></i>
+                        <p>Inicio</p>
+                    </a>
+                </li>
+                {% if app.request.get('_route') == 'cadastrarplano' %}
+                <li class="nav-item active">
+                    {% else %}
+                <li class="nav-item">
+                    {% endif %}
+                    <a href="{{ path('cadastrarplano') }}">
+                        <i class="fas fa-home"></i>
+                        <p>Cadastrar Plano</p>
+                    </a>
+                </li>
+                {% if app.request.get('_route') == 'cadastrarcliente' %}
+                <li class="nav-item active">
+                    {% else %}
+                <li class="nav-item">
+                    {% endif %}
+                    <a href="{{ path('cadastrarcliente') }}">
+                        <i class="fas fa-home"></i>
+                        <p>Cadastrar Cliente</p>
+                    </a>
+                </li>
+                {% if app.request.get('_route') == 'cadastrarmedico' %}
+                <li class="nav-item active">
+                    {% else %}
+                <li class="nav-item">
+                    {% endif %}
+                    <a href="{{ path('cadastrarmedico') }}">
+                        <i class="fas fa-home"></i>
+                        <p>Cadastrar Médico</p>
+                    </a>
+                </li>
+                {% if app.request.get('_route') == 'marcacaohorario' %}
+                <li class="nav-item active">
+                    {% else %}
+                <li class="nav-item">
+                    {% endif %}
+                    <a href="#dashboard">
+                        <i class="fas fa-home"></i>
+                        <p>Marcação de Horário</p>
+                    </a>
+                </li>
+                {% if app.request.get('_route') == 'horariosagendados' %}
+                <li class="nav-item active">
+                    {% else %}
+                <li class="nav-item">
+                    {% endif %}
+                    <a href="#dashboard">
+                        <i class="fas fa-home"></i>
+                        <p>Horários Agendados</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

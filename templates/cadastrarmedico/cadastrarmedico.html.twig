@@ -6,7 +6,7 @@
 
 
 
-{% block body %}
+{% block content %}
 
 
     <div class="wrapper">
@@ -25,36 +25,6 @@
 
                         </div>
                         <div class="form-group">
-                            <label for="dia1" class="placeholder">Primeiro Dia</label>
-                            {{ form_widget(form.dia1, {'attr': {'class': 'form-control input-border-bottom'}}) }}
-
-                        </div>
-
-                        <div class="form-group">
-                            <label for="dia2" class="placeholder">Segundo Dia</label>
-                            {{ form_widget(form.dia2, {'attr': {'class': 'form-control input-border-bottom'}}) }}
-
-                        </div>
-
-                        <div class="form-group">
-                            <label for="dia3" class="placeholder">Terceiro Dia</label>
-                            {{ form_widget(form.dia3, {'attr': {'class': 'form-control input-border-bottom'}}) }}
-
-                        </div>
-
-                        <div class="form-group">
-                            <label for="dia4" class="placeholder">Quarto Dia</label>
-                            {{ form_widget(form.dia4, {'attr': {'class': 'form-control input-border-bottom'}}) }}
-
-                        </div>
-
-                        <div class="form-group">
-                            <label for="dia5" class="placeholder">Quinto Dia</label>
-                            {{ form_widget(form.dia5, {'attr': {'class': 'form-control input-border-bottom'}}) }}
-
-                        </div>
-
-                        <div class="form-group">
                             <label for="especialidade_idespecialidade" class="placeholder">Especialidade</label>
                             {{ form_widget(form.especialidade_idespecialidade, {'attr': {'class': 'form-control input-border-bottom'}}) }}
                             {# para cada input do formuário você irá usar o form_widget com o nome do formulário que está no controller
@@ -63,7 +33,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="horario_medico_idhorariomedico" class="placeholder">Plano de Saúde</label>
+                            <label for="horario_medico_idhorariomedico" class="placeholder">Horário de Atendimento</label>
                             {{ form_widget(form.horario_medico_idhorariomedico, {'attr': {'class': 'form-control input-border-bottom'}}) }}
 
                         </div>
@@ -77,13 +47,6 @@
             </form>
         </div>
     </div>
-
-
-
-
-
-
-
 
 
 

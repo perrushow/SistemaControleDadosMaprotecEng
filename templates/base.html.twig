@@ -14,7 +14,16 @@
     </head>
     <body>
 
-        {% block body %}{% endblock %}
+        {% block body %}
+                {% include 'side.html.twig' %}
+                <div class="main-panel">
+                    <div class="content">
+                        <div class="page-inner">
+                            {% block content %}{% endblock %}
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
         {% block javascripts %}{% endblock %}
         <!--   Core JS Files   -->
         <script src="../assets/js/core/jquery.3.2.1.min.js"></script>

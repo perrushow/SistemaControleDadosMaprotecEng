@@ -24,7 +24,7 @@ class HorariosMedico
     private $dia;
 
     /**
-     * @ORM\Column(type="string", length=11)
+     * @ORM\Column(type="array")
      */
     private $hora;
 
@@ -60,7 +60,7 @@ class HorariosMedico
         return $this->hora;
     }
 
-    public function setHora(string $hora): self
+    public function setHora(array $hora): self
     {
         $this->hora = $hora;
 
@@ -70,9 +70,14 @@ class HorariosMedico
     /**
      * @return Collection|Medico[]
      */
-    public function getMedicoIdmedico(): Collection
+    public function getMedicoIdmedico()
     {
         return $this->medico_idmedico;
+    }
+
+    public function setMedicoIdmedico(\Doctrine\Common\Collections\Collection $medico_idmedico)
+    {
+        $this->medico_idmedico = $medico_idmedico;
     }
 
     public function addMedicoIdmedico(Medico $medicoIdmedico): self

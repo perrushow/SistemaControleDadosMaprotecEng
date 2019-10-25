@@ -181,6 +181,7 @@ class Medico
         return $this->horario_medico_idhorariomedico;
     }
 
+
     public function addHorarioMedicoIdhorariomedico(HorariosMedico $horarioMedicoIdhorariomedico): self
     {
         if (!$this->horario_medico_idhorariomedico->contains($horarioMedicoIdhorariomedico)) {
