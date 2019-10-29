@@ -60,7 +60,7 @@ class HorariosMedico
         return $this->hora;
     }
 
-    public function setHora(array $hora): self
+    public function setHora(string $hora): self
     {
         $this->hora = $hora;
 

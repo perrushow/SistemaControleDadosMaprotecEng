@@ -57,3 +57,5 @@ class CadastrarMedicoController extends AbstractController
         ]);
     }
 }
+
+// php bin/console doctrine:query:sql "select * from medico_horarios_medico hm, medico m, horarios_medico h where m.id = hm.medico_id and h.id = hm.horarios_medico_id and m.id = 12"

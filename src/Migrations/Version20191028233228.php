@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20191025202714 extends AbstractMigration
+final class Version20191028233228 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -26,7 +26,7 @@ final class Version20191025202714 extends AbstractMigration
         $this->addSql('CREATE TABLE especialidade (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, esnome VARCHAR(50) NOT NULL)');
         $this->addSql('CREATE TABLE horarios_medico (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, dia VARCHAR(10) NOT NULL, hora CLOB NOT NULL --(DC2Type:array)
         )');
-        $this->addSql('CREATE TABLE medico (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, menome VARCHAR(100) NOT NULL, dia1 VARCHAR(10) DEFAULT NULL, dia2 VARCHAR(10) DEFAULT NULL, dia3 VARCHAR(10) DEFAULT NULL, dia4 VARCHAR(10) DEFAULT NULL, dia5 VARCHAR(10) DEFAULT NULL)');
+        $this->addSql('CREATE TABLE medico (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, menome VARCHAR(100) NOT NULL)');
         $this->addSql('CREATE TABLE medico_especialidade (medico_id INTEGER NOT NULL, especialidade_id INTEGER NOT NULL, PRIMARY KEY(medico_id, especialidade_id))');
         $this->addSql('CREATE INDEX IDX_6E75B05AA7FB1C0C ON medico_especialidade (medico_id)');
         $this->addSql('CREATE INDEX IDX_6E75B05A3BA9BFA5 ON medico_especialidade (especialidade_id)');

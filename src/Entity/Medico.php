@@ -6,6 +6,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+
+// retirado os dias da tabela medico Pois nao ha necessidade desses dados, eles fazem parte da relacao entre as tabelas medico e horarios medico
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MedicoRepository")
  */
@@ -22,31 +25,6 @@ class Medico
      * @ORM\Column(type="string", length=100)
      */
     private $menome;
-
-    /**
-     * @ORM\Column(type="string", length=10, nullable=true)
-     */
-    private $dia1;
-
-    /**
-     * @ORM\Column(type="string", length=10, nullable=true)
-     */
-    private $dia2;
-
-    /**
-     * @ORM\Column(type="string", length=10, nullable=true)
-     */
-    private $dia3;
-
-    /**
-     * @ORM\Column(type="string", length=10, nullable=true)
-     */
-    private $dia4;
-
-    /**
-     * @ORM\Column(type="string", length=10, nullable=true)
-     */
-    private $dia5;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Especialidade", inversedBy="medico_idmedico")
@@ -87,66 +65,6 @@ class Medico
         return $this;
     }
 
-    public function getDia1(): ?string
-    {
-        return $this->dia1;
-    }
-
-    public function setDia1(?string $dia1): self
-    {
-        $this->dia1 = $dia1;
-
-        return $this;
-    }
-
-    public function getDia2(): ?string
-    {
-        return $this->dia2;
-    }
-
-    public function setDia2(?string $dia2): self
-    {
-        $this->dia2 = $dia2;
-
-        return $this;
-    }
-
-    public function getDia3(): ?string
-    {
-        return $this->dia3;
-    }
-
-    public function setDia3(?string $dia3): self
-    {
-        $this->dia3 = $dia3;
-
-        return $this;
-    }
-
-    public function getDia4(): ?string
-    {
-        return $this->dia4;
-    }
-
-    public function setDia4(?string $dia4): self
-    {
-        $this->dia4 = $dia4;
-
-        return $this;
-    }
-
-    public function getDia5(): ?string
-    {
-        return $this->dia5;
-    }
-
-    public function setDia5(?string $dia5): self
-    {
-        $this->dia5 = $dia5;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Especialidade[]
      */
@@ -181,15 +99,17 @@ class Medico
         return $this->horario_medico_idhorariomedico;
     }
 
-
-    public function addHorarioMedicoIdhorariomedico(HorariosMedico $horarioMedicoIdhorariomedico): self
+    public function setHorarioMedicoIdhorariomedico($horario_medico_idhorariomedico)
     {
-        if (!$this->horario_medico_idhorariomedico->contains($horarioMedicoIdhorariomedico)) {
-            $this->horario_medico_idhorariomedico[] = $horarioMedicoIdhorariomedico;
+        $this->horario_medico_idhorariomedico = new ArrayCollection();
+
+        foreach ($horario_medico_idhorariomedico as $horario) {
+            $this->addHorarioMedicoIdhorariomedico($horario);
         }
 
         return $this;
     }
+
 
     public function removeHorarioMedicoIdhorariomedico(HorariosMedico $horarioMedicoIdhorariomedico): self
     {

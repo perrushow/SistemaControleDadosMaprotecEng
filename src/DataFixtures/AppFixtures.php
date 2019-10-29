@@ -17,6 +17,7 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
+        //retirado horarios extras, foi deixado somente de 8 as 12h
         $esp1 = new Especialidade();
 
         $esp1->setEsnome("Pediatria");
@@ -64,17 +65,7 @@ class AppFixtures extends Fixture
 
         $horario = new HorariosMedico();
         $horario->setDia("Segunda");
-        $horario->setHora("12:00-13:00");
-        $manager->persist($horario);
-
-        $horario = new HorariosMedico();
-        $horario->setDia("Segunda");
-        $horario->setHora("13:00-14:00");
-        $manager->persist($horario);
-
-        $horario = new HorariosMedico();
-        $horario->setDia("Segunda");
-        $horario->setHora("15:00-16:00");
+        $horario->setHora("11:00-12:00");
         $manager->persist($horario);
 
         //Terça-feira
@@ -96,17 +87,7 @@ class AppFixtures extends Fixture
 
         $horario = new HorariosMedico();
         $horario->setDia("Terça");
-        $horario->setHora("12:00-13:00");
-        $manager->persist($horario);
-
-        $horario = new HorariosMedico();
-        $horario->setDia("Terça");
-        $horario->setHora("13:00-14:00");
-        $manager->persist($horario);
-
-        $horario = new HorariosMedico();
-        $horario->setDia("Terça");
-        $horario->setHora("15:00-16:00");
+        $horario->setHora("11:00-12:00");
         $manager->persist($horario);
 
         //Quarta-feira
@@ -128,17 +109,7 @@ class AppFixtures extends Fixture
 
         $horario = new HorariosMedico();
         $horario->setDia("Quarta");
-        $horario->setHora("12:00-13:00");
-        $manager->persist($horario);
-
-        $horario = new HorariosMedico();
-        $horario->setDia("Quarta");
-        $horario->setHora("13:00-14:00");
-        $manager->persist($horario);
-
-        $horario = new HorariosMedico();
-        $horario->setDia("Quarta");
-        $horario->setHora("15:00-16:00");
+        $horario->setHora("11:00-12:00");
         $manager->persist($horario);
 
         //Quinta-feira
@@ -160,17 +131,7 @@ class AppFixtures extends Fixture
 
         $horario = new HorariosMedico();
         $horario->setDia("Quinta");
-        $horario->setHora("12:00-13:00");
-        $manager->persist($horario);
-
-        $horario = new HorariosMedico();
-        $horario->setDia("Quinta");
-        $horario->setHora("13:00-14:00");
-        $manager->persist($horario);
-
-        $horario = new HorariosMedico();
-        $horario->setDia("Quinta");
-        $horario->setHora("15:00-16:00");
+        $horario->setHora("11:00-12:00");
         $manager->persist($horario);
 
         //Sexta-feira
@@ -192,17 +153,7 @@ class AppFixtures extends Fixture
 
         $horario = new HorariosMedico();
         $horario->setDia("Sexta");
-        $horario->setHora("12:00-13:00");
-        $manager->persist($horario);
-
-        $horario = new HorariosMedico();
-        $horario->setDia("Sexta");
-        $horario->setHora("13:00-14:00");
-        $manager->persist($horario);
-
-        $horario = new HorariosMedico();
-        $horario->setDia("Sexta");
-        $horario->setHora("15:00-16:00");
+        $horario->setHora("11:00-12:00");
         $manager->persist($horario);
 
         //Inserir no Db
