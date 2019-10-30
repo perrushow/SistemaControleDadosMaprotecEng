@@ -19,9 +19,7 @@ class ListagemControler extends AbstractController
     /**
      * @Route("/listagemagendamentos", name="agendamentos")
      */
-    public function listagem(\Symfony\Component\HttpFoundation\Request $request) : Response {
-
-    }
+ //IGNOREM ISSO AQUI NÁO VAI DAR TEMPO DE FAZER
 
 
 }
