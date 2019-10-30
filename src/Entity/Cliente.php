@@ -40,7 +40,7 @@ class Cliente
 
     public function __construct()
     {
-        $this->planos_idplanos = new ArrayCollection();
+        $this->planos_idplanos = new ArrayCollection(); //metodo construtor
         $this->consulta_idconsulta = new ArrayCollection();
     }
 

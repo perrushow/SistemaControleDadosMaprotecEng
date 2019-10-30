@@ -3,10 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="stylesheet" href="/assets/css/atlantis.css">
+        <link rel="stylesheet" href="/assets/css/atlantis.css"> //puxando o atlantis e bootstrap
         <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
         {% block stylesheets %}
-            {# No base.html.twig você vai colocar a importação das ferramentas e configurações que serão utilizadas
+            {# GP - No base.html.twig vesta sendo feita a  importação das ferramentas e configurações que serão utilizadas
         pela ferramenta bootstrap esses comandos estão na documentação do atlantis em
         https://themekita.com/demo-atlantis-lite-bootstrap/livepreview/documentation/index.html importando esses comandos no bloco base
         todas as outras páginas que extendem esse arquivo também vão herdar essas importações de estilos#}
@@ -15,7 +15,7 @@
     <body>
 
         {% block body %}
-                {% include 'side.html.twig' %}
+                {% include 'side.html.twig' %} {#//menu lateral que escolhi viu Manoel e time (GP) significa que todas as paginas que derem extend nesse base vao ter menu lateral#}
                 <div class="main-panel">
                     <div class="content"  style="overflow: auto">
                         <div class="page-inner">

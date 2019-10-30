@@ -17,7 +17,7 @@
                     <h1>Cadastro de Medico</h1>
                     <div class="login-form">
 
-                        {{ form_start(form) }} {# antes de adicionar os campos do formulário você inicia um bloco de formulário
+                        {{ form_start(form) }} {#  MANOEL antes de adicionar os campos do formulário você inicia um bloco de formulário
                         e no final vc irá fechar esse bloco com form_end e o nome do form#}
                         <div class="form-group">
                             <label for="menome" class="placeholder">Nome Do Medico</label>
@@ -32,7 +32,7 @@
                                                         dependendo de qual efeito de CSS você quer para o seu form#}
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group"> {# essas condicoes sao para que sejam separados os horarios de acordo com os dias da semana! Peguei isso do Stackoverflow#}
                             {% for batch in form.horario_medico_idhorariomedico|batch(4) %}
                                 {% if i == 0 %}
                                 <label> Segunda </label>
