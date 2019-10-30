@@ -189,6 +189,10 @@ label {
   color: #495057 !important;
   font-size: 14px !important; }
 
+input[type=checkbox] {
+  margin-right: 5px;
+}
+
 .text-small {
   font-size: 11px; }
 

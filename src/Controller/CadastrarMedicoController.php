@@ -34,8 +34,8 @@ class CadastrarMedicoController extends AbstractController
             ->add('horario_medico_idhorariomedico', EntityType::class, [
                             'class' => HorariosMedico::class,
                             'choice_label' => 'hora',
-                            'multiple' => 'true',
-                            'expanded' => 'true',
+                            'multiple' => 'true', //quando coloca os dois de acordo com a documentacao ele cria os checkboxes
+                            'expanded' => 'true', //quando coloca os dois de acordo com a documentacao ele cria os checkboxes
                             'label' => 'Horario Medico',
                             ])
             ->add('confirme', SubmitType::class, ['label' => 'Cadastrar Medico'])
@@ -54,6 +54,7 @@ class CadastrarMedicoController extends AbstractController
 
         return $this->render('cadastrarmedico/cadastrarmedico.html.twig', [
             'form' => $form->createView(),
+            'i' => 0,
         ]);
     }
 }

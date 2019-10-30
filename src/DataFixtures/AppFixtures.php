@@ -21,7 +21,7 @@ class AppFixtures extends Fixture
         $esp1 = new Especialidade();
 
         $esp1->setEsnome("Pediatria");
-        $manager->persist($esp1);
+        $manager->persist($esp1); // esse persist e usado para mandar salvar no db o nome da especialidade
 
 
         $esp2 = new Especialidade();

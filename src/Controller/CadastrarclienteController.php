@@ -15,14 +15,14 @@ use Symfony\Component\HttpFoundation\Response;
 class CadastrarclienteController extends AbstractController
 {
     /**
-     * @Route("/cadastrarcliente", name="cadastrarcliente")
+     * @Route("/cadastrarcliente", name="cadastrarcliente") // essa e a rota da pagina ou seja quando for digitar no browser depois do codigo do servidor vc coloca isso
      */
     public function cadastrocliente(\Symfony\Component\HttpFoundation\Request $request) : Response
     {
-        $cliente= new Cliente();
+        $cliente= new Cliente(); //variavel e novo objeto cliente
 
-        $form = $this->createFormBuilder($cliente)
-            ->add('clinome', TextType::class, ['label' => 'Nome Completo']) //A Label precisa ser igual a variavel criada no DB no caso planome
+        $form = $this->createFormBuilder($cliente) //cria um form usando a var cliente
+            ->add('clinome', TextType::class, ['label' => 'Nome Completo']) //A Label precisa ser igual a variavel criada no DB no caso planome e cada add e um campo do form
             ->add('telefone', TextType::class, ['label' => 'Telefone'])
             ->add('planos_idplanos', EntityType::class, [
                 'class' => Planos::class,
@@ -44,7 +44,7 @@ class CadastrarclienteController extends AbstractController
 
         }
 
-        return $this->render('cadastrarcliente/cadastrarcliente.html.twig', [
+        return $this->render('cadastrarcliente/cadastrarcliente.html.twig', [ //esse comando eh utilizado para chamar a pagina de html e renderizar ela
             'form' => $form->createView(),
         ]);
     }
