@@ -14,19 +14,13 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\EntityRepository;
+
 
 class MarcacaoController extends AbstractController
 {
-    /**
-     * @Route("/selecionartipo", name="selecionartipo")
-     */
-    public function selecionarTipo(\Symfony\Component\HttpFoundation\Request $request) : Response
-    {
-        return $this->render('marcacao/selecionartipo.html.twig', [
-        ]);
-    }
-
-
+  
     /**
      * @Route("/selecionarespecialidade", name="selecionarespecialidade")
      */
@@ -42,29 +36,41 @@ class MarcacaoController extends AbstractController
         ->add('confirme', SubmitType::class, ['label' => 'Selecionar'])
         ->getForm();
 
+      
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid())
         {
+           
             $selecaoesp = $form->getData();
+            dump($selecaoesp["especialidade_idespecialidade"]->getId());
+            $selec = $selecaoesp["especialidade_idespecialidade"]->getId();
+            return $this->redirectToRoute('selecionarmedico', ['id' =>  $selec]);
         }
-
+        
         return $this->render('marcacao/selecionaresp.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/selecionarmedico", name="selecionarmedico")
+     * @Route("/selecionarmedico/{id}", name="selecionarmedico",)
      */
-    public function marcacaoHorarioMedico(\Symfony\Component\HttpFoundation\Request $request) : Response
+    public function marcacaoHorarioMedico($id ,\Symfony\Component\HttpFoundation\Request $request) : Response
 
     {
+        $entityManager = $this->getDoctrine()->getManager(); 
+        $Medico = $entityManager->getRepository(Medico::class)->find(1);
+        $horas = $Medico->getEspecialidadeIdespecialidade();
+        dump($horas.esnome);
+
         $form = $this->createFormBuilder()
-            ->add('medico_idmedico', EntityType::class, [
+            ->add('menome', EntityType::class, [
                 'class' => Medico::class,
                 'choice_label' => 'menome',
                 'label' => 'Medico',
+                
+                
             ])
             ->add('confirme', SubmitType::class, ['label' => 'Selecionar'])
             ->getForm();
@@ -78,6 +84,7 @@ class MarcacaoController extends AbstractController
 
         return $this->render('marcacao/selecionarmed.html.twig', [
             'form' => $form->createView(),
+            
         ]);
     }
 }

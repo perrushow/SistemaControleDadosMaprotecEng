@@ -25,20 +25,7 @@ class ListagemControler extends AbstractController
      */
 
      //Esse Codigo NÃO DEVE ESTAR AQUI!!! Ele é referente ao agendamento pós marcação da consulta 
-    public function index($id): Response {
-        //  composer require --dev symfony/profiler-pack 
-
-        
-        $entityManager = $this->getDoctrine()->getManager(); // EntityManager para inserir, atualizar, excluir e encontrar objetos no banco de dados.
-        $Medico = $entityManager->getRepository(Medico::class)->find($id); // Cria uma referencia ao repositorio da entidade medico e utiliza a função de busca por id
-        $horas = $Medico->getHorarioMedicoIdhorariomedico(); // pega os dados horarios medicos que estão em medico
-        return $this->render('listar/horario.html.twig', [
-            'medicos' => $Medico,
-            'horas' => $horas,
-        ]);
-
-      
-    }
+    
 
 
 
