@@ -97,19 +97,18 @@ class MarcacaoController extends AbstractController
 
     {
     
-        $entityManager = $this->getDoctrine()->getManager(); // EntityManager para inserir, atualizar, excluir e encontrar objetos no banco de dados.
-        $Medico = $entityManager->getRepository(Medico::class)->findAll();
-        
         $form = $this->createFormBuilder()                      //Criando formulario Symfony listando apenas medicos com especialidade selecionada na pagina anterior
           ->add('medico_idmedico', EntityType::class, [                 
-                'class' => HorariosMedico::class,
-                'choice_label' => 'hora',
-                'multiple' => 'false',
-                'expanded' => 'true',
-                'label' => 'Medico',
+                'class' => HorariosMedico::class,               //Utilizamos a entidade horarios medico
+                'choice_label' => 'hora',                       //Escolhemos o Campo hora
                 
-                'query_builder' => function (EntityRepository $er)use ($esp) {
+                'expanded' => 'true',                           //Aqui ocorre as seleções em radio
+                'label' => 'Medico',                            //label Medico
+               
+                                    //query_builder cria uma consulta no banco que seleciona apenas horarios da especialidade selecionada
+                'query_builder' => function (EntityRepository $er)use ($esp) {     
                     return $er->createQueryBuilder('h')
+                    
                        ->join('h.medico_idmedico', 'm')
                        ->join('m.especialidade_idespecialidade', 'e')
                        ->where('e.id = :especi')
@@ -133,7 +132,7 @@ class MarcacaoController extends AbstractController
         return $this->render('marcacao/selecionarmed.html.twig', [
             'form' => $form->createView(),
             'i' => 0,
-            'medicos' => $Medico
+           
         ]);
     }
 }
