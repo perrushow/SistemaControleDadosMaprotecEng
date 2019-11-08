@@ -107,23 +107,27 @@ class MarcacaoController extends AbstractController
     public function marcacaoHorarioMedico($cli ,$esp ,\Symfony\Component\HttpFoundation\Request $request) : Response
 
     {
-        dump($cli);
-        
-        dump($esp);
+    
       
 
         $form = $this->createFormBuilder()                      //Criando formulario Symfony listando apenas medicos com especialidade selecionada na pagina anterior
           ->add('medico_idmedico', EntityType::class, [                 
-                'class' => Medico::class,
-                'choice_label' => 'menome',
+                'class' => HorariosMedico::class,
+                'choice_label' => 'hora',
+                
                 'label' => 'Medico',
-                'query_builder' => function (EntityRepository $er)use ($esp) {               //query_builder fazemos uma seleção no banco doctrine, aonde especialideades_id é igual ao id selecionado na pagina anterior
-                    return $er->createQueryBuilder('m')
-                        ->join('m.especialidade_idespecialidade', 'e')
-                        ->where('e.id = :especi')
-                        ->setParameter('especi', $esp)         
-                        ;                                             
-                },
+                'multiple' => 'true', 
+                'expanded' => 'false',
+                'query_builder' => function (EntityRepository $er)use ($esp) {
+                    return $er->createQueryBuilder('h')
+                       ->join('h.medico_idmedico', 'm')
+                       ->join('m.especialidade_idespecialidade', 'e')
+                       ->where('e.id = :especi')
+                       ->setParameter('especi', $esp)
+                       ;}
+                           
+                        
+              
                 
             ])
             ->add('confirme', SubmitType::class, ['label' => 'Selecionar'])
@@ -138,7 +142,7 @@ class MarcacaoController extends AbstractController
 
         return $this->render('marcacao/selecionarmed.html.twig', [
             'form' => $form->createView(),
-            
+            'i' => 0,
         ]);
     }
 }
