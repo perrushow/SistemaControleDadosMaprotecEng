@@ -28,6 +28,10 @@ class Medico
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Especialidade", inversedBy="medico_idmedico")
+     * @ORM\JoinTable(name="especialidade_medico",
+     *      joinColumns={@ORM\JoinColumn(name="medico_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="especialidade_id", referencedColumnName="id")}
+     *      )
      */
     private $especialidade_idespecialidade;
 
@@ -109,7 +113,6 @@ class Medico
 
         return $this;
     }
-
 
     public function removeHorarioMedicoIdhorariomedico(HorariosMedico $horarioMedicoIdhorariomedico): self
     {

@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 
+use App\Entity\Consulta;
 use App\Entity\Especialidade;
 use App\Entity\HorariosMedico;
 use App\Entity\Medico;
@@ -21,15 +22,15 @@ class ListagemControler extends AbstractController
 {
     
     /**
-     * @Route("/listagemagendamentos/{id}", name="agendamentos")
+     * @Route("/listagemagendamentos/", name="agendamentos")
      */
 
-     //Esse Codigo NÃO DEVE ESTAR AQUI!!! Ele é referente ao agendamento pós marcação da consulta 
-    
-
-
-
-      //Esse Codigo NÃO DEVE ESTAR AQUI!!! Ele é referente ao agendamento pós marcação da consulta 
-
+    public function gerenciarConsultas()
+    {
+        $consultas = $this->getDoctrine()->getRepository(Consulta::class)->findAll(); //pega todas as consultas cadastradas no BD e renderiza na pagina listagem
+        return $this->render('listagem/listagem.html.twig', [
+            'consultas' => $consultas,
+        ]);
+    }
 
 }

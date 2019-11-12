@@ -2,9 +2,12 @@
 
 namespace App\Repository;
 
+use App\Entity\Consulta;
 use App\Entity\HorariosMedico;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query\Expr\Join;
+use function Doctrine\ORM\QueryBuilder;
 
 /**
  * @method HorariosMedico|null find($id, $lockMode = null, $lockVersion = null)
@@ -36,15 +39,37 @@ class HorariosMedicoRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?HorariosMedico
+
+    public function findHorarios($med, $diasemana, $data) //funcao para achar os horarios disponiveis do medico solicitado
     {
-        return $this->createQueryBuilder('h')
-            ->andWhere('h.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
+
+        $subQueryBuilder = $this->getEntityManager()->createQueryBuilder();
+        $subQuery = $subQueryBuilder  //subquery para achar uma lista de horarios que já estão ocupados ou seja que ja tem consultas marcadas no dia que o cliente quer agendar
+            ->select('hm.hora') //seleciona o campo hora
+            ->from(Consulta::class, 'cs') //tabela consulta com inner join da tabela horarios medico
+            ->innerJoin('cs.horarios_medico_idhorariosmedico', 'hm')
+            ->where('cs.medico_idmedico = :med and cs.dia_consulta = :dia2')  //condições onde lista os horarios ja marcados do medico :med para o dia da consulta :dia2
+            ->setParameters(array('med' => $med,
+                'dia2' => $data,
+            ))
         ;
+
+        $queryBuilder = $this->getEntityManager()->createQueryBuilder();
+        $query = $queryBuilder  //lista os horarios medicos de um medico especifico em uma data especifica que ainda não tenham sido marcados
+            ->select('h')
+            ->from(HorariosMedico::class, 'h') //pega os dados tanto da tabela de horariosmedico quanto de medico e de consulta
+            ->innerJoin('h.medico_idmedico', 'm')
+            ->leftJoin('h.consulta_idconsulta', 'c')
+            ->where('m.id = :med and h.dia = :dia') //condicao de listar horarios de um medico especifico e dia especifico
+            ->andWhere($queryBuilder->expr()->notIn('h.hora', $subQuery->getDQL())) // condição para excluir os horarios que já estão marcados selecionados pela subquery
+            ->setParameters(array('med' => $med,
+                'dia' => $diasemana,
+                'dia2' => $data
+            ));
+        return $query;
+
     }
-    */
+
+
+
 }
