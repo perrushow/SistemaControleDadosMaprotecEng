@@ -30,12 +30,22 @@ class HorariosMedico
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Medico", mappedBy="horario_medico_idhorariomedico")
+     * @ORM\JoinTable(name="medico_horarios_medico",
+     *      joinColumns={@ORM\JoinColumn(name="horarios_medico_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="medico_id", referencedColumnName="id")}
+     *      )
      */
     private $medico_idmedico;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Consulta", mappedBy="horarios_medico_idhorariosmedico")
+     */
+    private $consulta_idconsulta;
 
     public function __construct()
     {
         $this->medico_idmedico = new ArrayCollection();
+        $this->consulta_idconsulta = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -95,6 +105,37 @@ class HorariosMedico
         if ($this->medico_idmedico->contains($medicoIdmedico)) {
             $this->medico_idmedico->removeElement($medicoIdmedico);
             $medicoIdmedico->removeHorarioMedicoIdhorariomedico($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Consulta[]
+     */
+    public function getConsultaIdconsulta(): Collection
+    {
+        return $this->consulta_idconsulta;
+    }
+
+    public function addConsultaIdconsultum(Consulta $consultaIdconsultum): self
+    {
+        if (!$this->consulta_idconsulta->contains($consultaIdconsultum)) {
+            $this->consulta_idconsulta[] = $consultaIdconsultum;
+            $consultaIdconsultum->setHorariosMedicoIdhorariosmedico($this);
+        }
+
+        return $this;
+    }
+
+    public function removeConsultaIdconsultum(Consulta $consultaIdconsultum): self
+    {
+        if ($this->consulta_idconsulta->contains($consultaIdconsultum)) {
+            $this->consulta_idconsulta->removeElement($consultaIdconsultum);
+            // set the owning side to null (unless already changed)
+            if ($consultaIdconsultum->getHorariosMedicoIdhorariosmedico() === $this) {
+                $consultaIdconsultum->setHorariosMedicoIdhorariosmedico(null);
+            }
         }
 
         return $this;

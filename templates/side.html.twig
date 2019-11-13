@@ -42,22 +42,22 @@
                         <p>Cadastrar Médico</p>
                     </a>
                 </li>
-                {% if app.request.get('_route') == 'marcacaohorario' %}
+                {% if app.request.get('_route') == 'selecionarcliente' %}
                 <li class="nav-item active">
                     {% else %}
                 <li class="nav-item">
                     {% endif %}
-                    <a href="#dashboard">
+                    <a href="{{ path('selecionarcliente') }}">
                         <i class="fas fa-home"></i>
                         <p>Marcação de Horário</p>
                     </a>
                 </li>
-                {% if app.request.get('_route') == 'horariosagendados' %}
+                {% if app.request.get('_route') == 'agendamentos' %}
                 <li class="nav-item active">
                     {% else %}
                 <li class="nav-item">
                     {% endif %}
-                    <a href="#dashboard">
+                    <a href="{{ path('agendamentos') }}">
                         <i class="fas fa-home"></i>
                         <p>Horários Agendados</p>
                     </a>

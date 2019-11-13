@@ -11,14 +11,12 @@
                     <h1>Por qual opção você deseja marcar sua consulta?</h1>
                     <div class="login-form">
 
-                        <a href="{{ path('home') }}"  >
-                            <p class="btn btn-primary">Médico</p>
-                        </a>
+                      {{ form_start(form) }} {# antes de adicionar os campos do formulário você inicia um bloco de formulário
+                        e no final vc irá fechar esse bloco com form_end e o nome do form#}
 
-                        <a href="{{ path('home') }}" >
-                            <p class="btn btn-primary">Especialidade</p>
-                        </a>
+                        </div>
                     </div>
+                     {{ form_end(form) }}
                 </div>
             </form>
         </div>

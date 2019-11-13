@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 
+use App\Entity\Consulta;
 use App\Entity\Especialidade;
 use App\Entity\HorariosMedico;
 use App\Entity\Medico;
@@ -21,28 +22,15 @@ class ListagemControler extends AbstractController
 {
     
     /**
-     * @Route("/listagemagendamentos/{id}", name="agendamentos")
+     * @Route("/listagemagendamentos/", name="agendamentos")
      */
 
-     //Esse Codigo NÃO DEVE ESTAR AQUI!!! Ele é referente ao agendamento pós marcação da consulta 
-    public function index($id): Response {
-        //  composer require --dev symfony/profiler-pack 
-
-        
-        $entityManager = $this->getDoctrine()->getManager(); // EntityManager para inserir, atualizar, excluir e encontrar objetos no banco de dados.
-        $Medico = $entityManager->getRepository(Medico::class)->find($id); // Cria uma referencia ao repositorio da entidade medico e utiliza a função de busca por id
-        $horas = $Medico->getHorarioMedicoIdhorariomedico(); // pega os dados horarios medicos que estão em medico
-        return $this->render('listar/horario.html.twig', [
-            'medicos' => $Medico,
-            'horas' => $horas,
+    public function gerenciarConsultas()
+    {
+        $consultas = $this->getDoctrine()->getRepository(Consulta::class)->findAll(); //pega todas as consultas cadastradas no BD e renderiza na pagina listagem
+        return $this->render('listagem/listagem.html.twig', [
+            'consultas' => $consultas,
         ]);
-
-      
     }
-
-
-
-      //Esse Codigo NÃO DEVE ESTAR AQUI!!! Ele é referente ao agendamento pós marcação da consulta 
-
 
 }
