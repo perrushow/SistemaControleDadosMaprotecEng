@@ -26,8 +26,8 @@ class ListagemControler extends AbstractController
      */
 
     public function gerenciarConsultas()                    
-    {
-        $consultas = $this->getDoctrine()->getRepository(Consulta::class)->findAll(); //pega todas as consultas cadastradas no BD e renderiza na pagina listagem 
+    {       //pega todas as consultas cadastradas no BD e renderiza na pagina listagem
+        $consultas = $this->getDoctrine()->getRepository(Consulta::class)->findAll();  
         return $this->render('listagem/listagem.html.twig', [
             'consultas' => $consultas,
         ]);
@@ -39,7 +39,7 @@ class ListagemControler extends AbstractController
      * @Route("/{id}/show", name="consulta_show", methods={"GET"}) 
      */
     public function showConsulta(Consulta $id): Response
-    {                   //Pega o id da consulta e renderiza apenas os campos dela  
+    {                   //Pega o id da consulta selecionada e renderiza apenas ela 
         return $this->render('listagem/show.html.twig', [
             'consulta' => $id,
         ]);
@@ -49,12 +49,12 @@ class ListagemControler extends AbstractController
      * @Route("delete/{id}", name="consulta_delete") 
      */
     public function deleteConsulta($id)
-    {   //Ao clicar no botão de desmarcar consulta, o controler pegará o id da consulta para deleta esse cadastro 
-        $em = $this->getDoctrine()->getManager();   //Conexão ao gerenciador de entidades 
-        $deleteconsulta = $em->getRepository(Consulta::class)->find($id);  //Buscar a consulta com o id selecionado 
-        $em->remove($deleteconsulta);  // Deletar essa consulta 
+    {   //Ao clicar no botão de desmarcar consulta, o controler pegará o id da consulta para que seja deletado esse cadastro 
+        $em = $this->getDoctrine()->getManager();   // Conexão ao gerenciador de entidades 
+        $deleteconsulta = $em->getRepository(Consulta::class)->find($id);  //Buscar a consulta com o id selecionado para que possa ser excluida
+        $em->remove($deleteconsulta);  //Deletar essa consulta 
         $em->flush();
-        return $this->redirectToRoute('agendamentos'); //Redirecionar para rota 'agendamentos' 
+        return $this->redirectToRoute('agendamentos'); // Redirecionar para rota 'agendamentos' 
     }
 
 }
