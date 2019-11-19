@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+
+
+
+
+
+{% block content %}
+
+    <div class="wrapper">
+        <div class="container" style="margin-top: 50px">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Data da Consulta</th> {#cria uma tabela com os campos seguintes#}
+                            <th scope="col">Nome do Cliente</th>   
+                            <th scope="col">Nome do Médico</th>
+                            <th scope="col">Horário</th>
+                           <th scope="col">Opções</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        
+                            <tr>
+                                <td>{{consulta.DiaConsulta.format('d/m/Y')}}</td> {#pega os dados pertinentes da consulta atraves dos metodos get#}
+                                <td>{{consulta.getClienteIdcliente().getClinome()}}</td> {# listar o nome do cliente  #}
+                                <td>{{consulta.getMedicoIdmedico().getMenome()}}</td>  {# listar o nome do medico  #}
+                                <td>{{consulta.getHorariosMedicoIdhorariosmedico().getHora()}}</td>
+                               <td> <a class="btn btn-primary btn-border fas fa-plus" role = "button" href="{{ path('consulta_delete', {'id': consulta.id}) }}">Desmarcar</a></td>
+                               {# Botão que envia ao controlador o id da consulta para ser desmarcada #}
+ 
+                            </tr>
+                      
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+

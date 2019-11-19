@@ -14,7 +14,27 @@
                       {{ form_start(form) }} {# antes de adicionar os campos do formulário você inicia um bloco de formulário
                         e no final vc irá fechar esse bloco com form_end e o nome do form#}
 
+
+                     <div class="form-group">
+                            <label for="data_consulta" class="placeholder">Data da Consulta</label>
+                            {{ form_widget(form.data_consulta, {'attr': {'class': 'form-control input-border-bottom'}}) }}
+                            
                         </div>
+
+                            
+                     <div class="form-group">
+                            <label for="id" class="placeholder">Data da Consulta</label>
+                            {{ form_widget(form.id, {'attr': {'class': 'form-control input-border-bottom'}}) }}
+                        </div>
+
+
+                    <div class="form-group">
+                            {{ form_widget(form.confirme, {'attr': {'class': 'btn btn-primary'}}) }}
+                        </div>
+
+
+
+                        
                     </div>
                      {{ form_end(form) }}
                 </div>

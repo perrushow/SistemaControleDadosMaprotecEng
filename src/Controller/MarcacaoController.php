@@ -28,7 +28,7 @@ use function Symfony\Component\DependencyInjection\Loader\Configurator\expr;
 class MarcacaoController extends AbstractController
 {
     /**
-     * @Route("/selecionarcliente", name="selecionarcliente")
+     * @Route("/selecionarcliente", name="selecionarcliente") 
      */
     public function marcacaoHorarioCliente(\Symfony\Component\HttpFoundation\Request $request) : Response
     {
@@ -39,20 +39,20 @@ class MarcacaoController extends AbstractController
                 'choice_label' => 'clinome',
                 'label' => 'Cliente',
             ])
-            ->add('confirme', SubmitType::class, ['label' => 'Selecionar']) //SubmitType para enviar o formulario.
+            ->add('confirme', SubmitType::class, ['label' => 'Selecionar']) //SubmitType para enviar o formulario. 
             ->getForm();
 
 
-        $form->handleRequest($request);    // Metodo do formulario symfony que detecta quando ele é enviado.
+        $form->handleRequest($request);    // Metodo do formulario symfony que detecta quando ele é enviado. 
 
-        if ($form->isSubmitted() && $form->isValid())         //Logo depois que o symfony perceber o envio do formulario 'submit' entrará na condição e validará os dados.
+        if ($form->isSubmitted() && $form->isValid())   //Logo depois que o symfony perceber o envio do formulario 'submit' entrará na condição e validará os dados.
         {
 
-            $selecliente = $form->getData();        //$selecaoesp pegará o conteudo do formulario através da função getData() em $form.
+            $selecliente = $form->getData();   //$selecaoesp pegará o conteudo do formulario através da função getData() em $form.
 
-            $selec = $selecliente["cliente_idcliente"]->getId(); //Como é passado um array de objetos em $selecaoesp colocamos $selecaoesp["especialidade_idespecialidade"] que aponta para o objeto da especialidade selecionada e pegamos apenas o id com  ->getId() função presente em especialidade entity.
+            $selec = $selecliente["cliente_idcliente"]->getId(); //Como é passado um array de objetos em $selecaoesp colocamos $selecaoesp["especialidade_idespecialidade"] que aponta para o objeto da especialidade selecionada e pegamos apenas o id com  ->getId() função presente em especialidade entity. 
 
-            return $this->redirectToRoute('selecionarespecialidade', ['cli' =>  $selec]); //E finalmente redirecionamos a rota junto com o id da especialidade selecionada através do $_GET.
+            return $this->redirectToRoute('selecionarespecialidade', ['cli' =>  $selec]); //E finalmente redirecionamos a rota junto com o id da especialidade selecionada através do $_GET. 
         }
 
         return $this->render('marcacao/selecionarcli.html.twig', [
@@ -63,21 +63,21 @@ class MarcacaoController extends AbstractController
 
 
     /**
-     * @Route("/selecionarespecialidade/{cli}", name="selecionarespecialidade")
+     * @Route("/selecionarespecialidade/{cli}", name="selecionarespecialidade") 
      */
     public function marcacaoHorarioEspecialidade($cli ,\Symfony\Component\HttpFoundation\Request $request) : Response
     {
-        // Pagina de seleção de especialidades para marcação de consultar.
-        $form = $this->createFormBuilder()  //utiliazamos a função de criar formulario do symfony pegando como referencia a entidade especialidade.
-        ->add('especialidade_idespecialidade', EntityType::class, [   //EntityType para dizer que o campo é referencia de uma entidade.
-            'class' => Especialidade::class,             //class aponta para entidade selecionada no caso 'Especialidade'.
+        // Pagina de seleção de especialidades para marcação de consultar. 
+        $form = $this->createFormBuilder()  //utiliazamos a função de criar formulario do symfony pegando como referencia a entidade especialidade. 
+        ->add('especialidade_idespecialidade', EntityType::class, [   //EntityType para dizer que o campo é referencia de uma entidade. 
+            'class' => Especialidade::class,    //class aponta para entidade selecionada no caso 'Especialidade'.
             'choice_label' => 'esnome',                  //Renderizamos apenas os nomes das especialidades 'esnome'.
             'label' => 'Especialidade',
         ])
             ->add('confirme', SubmitType::class, ['label' => 'Selecionar']) //SubmitType para enviar o formulario.
             ->getForm();
 
-        dump($cli);
+        //dump($cli);
         $form->handleRequest($request);    // Metodo do formulario symfony que detecta quando ele é enviado.
 
         if ($form->isSubmitted() && $form->isValid())         //Logo depois que o symfony perceber o envio do formulario 'submit' entrará na condição e validará os dados.
@@ -149,8 +149,8 @@ class MarcacaoController extends AbstractController
                 }
             };
             $diasemana = $diasemana($dia);
-
-            return $this->redirectToRoute('selecionarhorario', ['esp' =>  $esp, 'cli' => $cli, 'med' => $med, 'diasemana' => $diasemana, 'data' => $data]);
+            
+         return $this->redirectToRoute('selecionarhorario', ['esp' =>  $esp, 'cli' => $cli, 'med' => $med, 'diasemana' => $diasemana, 'data' => $data]);
         } //passa esses parametros para a proxima pagina
 
         return $this->render('marcacao/selecionarmed.html.twig', [
@@ -201,11 +201,13 @@ class MarcacaoController extends AbstractController
             $entityManager->persist($consulta);
             $entityManager->flush();
 
+            return $this->redirectToRoute('selecionarcliente');
+
         }
 
         return $this->render('marcacao/selecionarhorario.html.twig', [
             'form' => $form->createView(),
-
+            'diasemana'=> $diasemana,
         ]);
     }
 }
