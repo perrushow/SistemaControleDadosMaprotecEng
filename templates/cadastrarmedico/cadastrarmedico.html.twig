@@ -2,12 +2,7 @@
 
 {% block title %}Cadastrar Medico!{% endblock %}
 
-
-
-
-
 {% block content %}
-
 
     <div class="wrapper">
         <div class="container" style="margin-top: 50px">
@@ -24,6 +19,7 @@
                             {{ form_widget(form.menome, {'attr': {'class': 'form-control input-border-bottom'}}) }}
 
                         </div>
+                        
                         <div class="form-group">
                             <label for="especialidade_idespecialidade" class="placeholder">Especialidade</label>
                             {{ form_widget(form.especialidade_idespecialidade, {'attr': {'class': 'form-control input-border-bottom'}}) }}
@@ -72,10 +68,6 @@
         </div>
     </div>
 
-
-
 {% endblock %}
-
-
 
 {% block javascripts %}{% endblock %}

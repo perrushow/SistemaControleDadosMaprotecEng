@@ -39,7 +39,6 @@ class HorariosMedicoRepository extends ServiceEntityRepository
     }
     */
 
-
     public function findHorarios($med, $diasemana, $data) //funcao para achar os horarios disponiveis do medico solicitado
     {
 
@@ -51,8 +50,7 @@ class HorariosMedicoRepository extends ServiceEntityRepository
             ->where('cs.medico_idmedico = :med and cs.dia_consulta = :dia2')  //condições onde lista os horarios ja marcados do medico :med para o dia da consulta :dia2
             ->setParameters(array('med' => $med,
                 'dia2' => $data,
-            ))
-        ;
+            ));
 
         $queryBuilder = $this->getEntityManager()->createQueryBuilder();
         $query = $queryBuilder  //lista os horarios medicos de um medico especifico em uma data especifica que ainda não tenham sido marcados
@@ -69,7 +67,5 @@ class HorariosMedicoRepository extends ServiceEntityRepository
         return $query;
 
     }
-
-
 
 }

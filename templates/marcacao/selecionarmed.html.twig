@@ -7,34 +7,23 @@
         <div class="container" style="margin-top: 50px">
             <form method="post" class="card">
                 <div class="card-body">
-
                     <h1>Por qual opção você deseja marcar sua consulta?</h1>
                     <div class="login-form">
-
                       {{ form_start(form) }} {# antes de adicionar os campos do formulário você inicia um bloco de formulário
-                        e no final vc irá fechar esse bloco com form_end e o nome do form#}
-
-
-                     <div class="form-group">
+                        e no final você irá fechar esse bloco com form_end e o nome do form#}
+                        <div class="form-group">
                             <label for="data_consulta" class="placeholder">Data da Consulta</label>
-                            {{ form_widget(form.data_consulta, {'attr': {'class': 'form-control input-border-bottom'}}) }}
-                            
+                            {{ form_widget(form.data_consulta, {'attr': {'class': 'form-control input-border-bottom'}}) }}   
                         </div>
-
-                            
-                     <div class="form-group">
-                            <label for="id" class="placeholder">Data da Consulta</label>
+   
+                        <div class="form-group">
+                            <label for="id" class="placeholder">Médico da Consulta</label>
                             {{ form_widget(form.id, {'attr': {'class': 'form-control input-border-bottom'}}) }}
                         </div>
 
-
-                    <div class="form-group">
+                        <div class="form-group">
                             {{ form_widget(form.confirme, {'attr': {'class': 'btn btn-primary'}}) }}
                         </div>
-
-
-
-                        
                     </div>
                      {{ form_end(form) }}
                 </div>

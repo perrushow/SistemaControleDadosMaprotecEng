@@ -31,7 +31,6 @@ class CadastrarplanoController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager(); //G.P - Linhas que adicionei para adicionar oq foi cadastrado no BD
             $entityManager->persist($planos);
             $entityManager->flush();
-
         }
 
         return $this->render('cadastrarplano/cadastrarplano.html.twig', [

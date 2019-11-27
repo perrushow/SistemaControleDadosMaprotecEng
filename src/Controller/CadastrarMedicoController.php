@@ -22,22 +22,22 @@ class CadastrarMedicoController extends AbstractController
     {
         $Medico= new Medico();
 
-        $form = $this->createFormBuilder($Medico)                       //A Label precisa ser igual a variavel criada no DB no caso menome, dia1, dia2...
-            ->add('menome', TextType::class, ['label' => 'Nome do Medico'])  //Nome da coluna medico no DB
-        //         //Coluna de medicos que puxa a tabela especialidade
+        $form = $this->createFormBuilder($Medico)  // A Label precisa ser igual a váriavel criada no banco de dados no caso menome, dia1, dia2...
+            ->add('menome', TextType::class, ['label' => 'Nome do Medico']) // Nome da coluna medico no banco de dados
+            //Coluna de medicos que puxa a tabela especialidade
             ->add('especialidade_idespecialidade', EntityType::class, [
                 'class' => Especialidade::class,
                 'choice_label' => 'esnome',
                 'multiple' => 'true',
                 'label' => 'Especialidade',
-                ])                                       //Coluna de medicos que puxa a tabela HorariosMedico, contendo os periodos de agendamento
+                ])  //Coluna de medicos que puxa a tabela HorariosMedico, contendo os periodos de agendamento
             ->add('horario_medico_idhorariomedico', EntityType::class, [
-                            'class' => HorariosMedico::class,
-                            'choice_label' => 'hora',
-                            'multiple' => 'true', //quando coloca os dois de acordo com a documentacao ele cria os checkboxes
-                            'expanded' => 'true', //quando coloca os dois de acordo com a documentacao ele cria os checkboxes
-                            'label' => 'Horario Medico',
-                            ])
+                'class' => HorariosMedico::class,
+                'choice_label' => 'hora',
+                'multiple' => 'true', // Quando coloca os dois de acordo com a documentacao ele cria os checkboxes
+                'expanded' => 'true', // Quando coloca os dois de acordo com a documentacao ele cria os checkboxes
+                'label' => 'Horario Medico',
+                ])
             ->add('confirme', SubmitType::class, ['label' => 'Cadastrar Medico'])
             ->getForm();
 
@@ -46,10 +46,9 @@ class CadastrarMedicoController extends AbstractController
         if ($form->isSubmitted() && $form->isValid())
         {
             $Medico = $form->getData();
-            $entityManager = $this->getDoctrine()->getManager();// Inseri no DB
+            $entityManager = $this->getDoctrine()->getManager();// Inserir no banco de dados
             $entityManager->persist($Medico);
             $entityManager->flush();
-
         }
 
         return $this->render('cadastrarmedico/cadastrarmedico.html.twig', [

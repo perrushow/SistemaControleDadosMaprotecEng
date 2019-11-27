@@ -6,7 +6,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-
 // retirado os dias da tabela medico Pois nao ha necessidade desses dados, eles fazem parte da relacao entre as tabelas medico e horarios medico
 
 /**
