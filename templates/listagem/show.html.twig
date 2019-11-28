@@ -18,7 +18,8 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{{consulta.DiaConsulta.format('d/m/Y')}}</td> {#pega os dados pertinentes da consulta atraves dos metodos get#}
+                                <td>{{consulta.DiaConsulta.format('d/m/Y')}}</td> {# pega os dados pertinentes da consulta atraves
+                                dos metodos get #}
                                 <td>{{consulta.getClienteIdcliente().getClinome()}}</td> {# listar o nome do cliente  #}
                                 <td>{{consulta.getMedicoIdmedico().getMenome()}}</td>  {# listar o nome do medico  #}
                                 <td>{{consulta.getHorariosMedicoIdhorariosmedico().getHora()}}</td>

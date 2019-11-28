@@ -41,13 +41,14 @@ class HorariosMedicoRepository extends ServiceEntityRepository
 
     public function findHorarios($med, $diasemana, $data) //funcao para achar os horarios disponiveis do medico solicitado
     {
-
         $subQueryBuilder = $this->getEntityManager()->createQueryBuilder();
-        $subQuery = $subQueryBuilder  //subquery para achar uma lista de horarios que já estão ocupados ou seja que ja tem consultas marcadas no dia que o cliente quer agendar
+        $subQuery = $subQueryBuilder  /* subquery para achar uma lista de horarios que já estão ocupados ou seja que ja tem consultas
+        marcadas no dia que o cliente quer agendar */
             ->select('hm.hora') //seleciona o campo hora
             ->from(Consulta::class, 'cs') //tabela consulta com inner join da tabela horarios medico
             ->innerJoin('cs.horarios_medico_idhorariosmedico', 'hm')
-            ->where('cs.medico_idmedico = :med and cs.dia_consulta = :dia2')  //condições onde lista os horarios ja marcados do medico :med para o dia da consulta :dia2
+            ->where('cs.medico_idmedico = :med and cs.dia_consulta = :dia2')  /* condições onde lista os horarios ja marcados
+            do medico :med para o dia da consulta :dia2 */
             ->setParameters(array('med' => $med,
                 'dia2' => $data,
             ));
@@ -59,13 +60,13 @@ class HorariosMedicoRepository extends ServiceEntityRepository
             ->innerJoin('h.medico_idmedico', 'm')
             ->leftJoin('h.consulta_idconsulta', 'c')
             ->where('m.id = :med and h.dia = :dia') //condicao de listar horarios de um medico especifico e dia especifico
-            ->andWhere($queryBuilder->expr()->notIn('h.hora', $subQuery->getDQL())) // condição para excluir os horarios que já estão marcados selecionados pela subquery
+            ->andWhere($queryBuilder->expr()->notIn('h.hora', $subQuery->getDQL())) /* condição para excluir os horarios que 
+            já estão marcados selecionados pela subquery */
             ->setParameters(array('med' => $med,
                 'dia' => $diasemana,
                 'dia2' => $data
             ));
         return $query;
-
     }
 
 }

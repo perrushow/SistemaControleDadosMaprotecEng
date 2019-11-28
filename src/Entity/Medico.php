@@ -64,7 +64,6 @@ class Medico
     public function setMenome(string $menome): self
     {
         $this->menome = $menome;
-
         return $this;
     }
 
@@ -81,7 +80,6 @@ class Medico
         if (!$this->especialidade_idespecialidade->contains($especialidadeIdespecialidade)) {
             $this->especialidade_idespecialidade[] = $especialidadeIdespecialidade;
         }
-
         return $this;
     }
 
@@ -90,7 +88,6 @@ class Medico
         if ($this->especialidade_idespecialidade->contains($especialidadeIdespecialidade)) {
             $this->especialidade_idespecialidade->removeElement($especialidadeIdespecialidade);
         }
-
         return $this;
     }
 
@@ -105,11 +102,9 @@ class Medico
     public function setHorarioMedicoIdhorariomedico($horario_medico_idhorariomedico)
     {
         $this->horario_medico_idhorariomedico = new ArrayCollection();
-
         foreach ($horario_medico_idhorariomedico as $horario) {
             $this->addHorarioMedicoIdhorariomedico($horario);
         }
-
         return $this;
     }
 
@@ -118,7 +113,6 @@ class Medico
         if ($this->horario_medico_idhorariomedico->contains($horarioMedicoIdhorariomedico)) {
             $this->horario_medico_idhorariomedico->removeElement($horarioMedicoIdhorariomedico);
         }
-
         return $this;
     }
 
@@ -136,7 +130,6 @@ class Medico
             $this->consulta_idconsulta[] = $consultaIdconsultum;
             $consultaIdconsultum->setMedicoIdmedico($this);
         }
-
         return $this;
     }
 
@@ -149,7 +142,6 @@ class Medico
                 $consultaIdconsultum->setMedicoIdmedico(null);
             }
         }
-
         return $this;
     }
 }

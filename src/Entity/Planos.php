@@ -46,7 +46,6 @@ class Planos
     public function setPlanome(string $planome): self
     {
         $this->planome = $planome;
-
         return $this;
     }
 
@@ -64,7 +63,6 @@ class Planos
             $this->clientes_idclientes[] = $clientesIdcliente;
             $clientesIdcliente->addPlanosIdplano($this);
         }
-
         return $this;
     }
 
@@ -74,7 +72,6 @@ class Planos
             $this->clientes_idclientes->removeElement($clientesIdcliente);
             $clientesIdcliente->removePlanosIdplano($this);
         }
-
         return $this;
     }
 }

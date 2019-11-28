@@ -43,8 +43,8 @@ class ListagemControler extends AbstractController
      */
     public function deleteConsulta($id)
     {   // Ao clicar no botão de desmarcar consulta, o controler pegará o id da consulta para que seja deletado esse cadastro 
-        $em = $this->getDoctrine()->getManager();   // Conexão ao gerenciador de entidades 
-        $deleteconsulta = $em->getRepository(Consulta::class)->find($id);  // Buscar a consulta com o id selecionado para que possa ser excluida
+        $em = $this->getDoctrine()->getManager();  // Conexão ao gerenciador de entidades 
+        $deleteconsulta = $em->getRepository(Consulta::class)->find($id); // Buscar a consulta com o id selecionado para que possa ser excluida
         $em->remove($deleteconsulta);  // Deletar essa consulta 
         $em->flush();
         return $this->redirectToRoute('agendamentos'); // Redirecionar para rota 'agendamentos' 

@@ -18,9 +18,9 @@ class CadastrarplanoController extends AbstractController
     public function cadastroplano(Request $request) : Response
     {
         $planos= new Planos();
-
         $form = $this->createFormBuilder($planos)
-            ->add('planome', TextType::class, ['label' => 'Nome do Plano']) //A Label precisa ser igual a variavel criada no DB no caso planome
+            ->add('planome', TextType::class, ['label' => 'Nome do Plano']) /* A Label precisa ser igual a variavel
+             criada no banco de dados no caso planome */
             ->add('confirme', SubmitType::class, ['label' => 'Cadastrar Plano'])
             ->getForm();
         $form->handleRequest($request);
@@ -28,7 +28,8 @@ class CadastrarplanoController extends AbstractController
         if ($form->isSubmitted() && $form->isValid())
         {
             $planos = $form->getData();
-            $entityManager = $this->getDoctrine()->getManager(); //G.P - Linhas que adicionei para adicionar oq foi cadastrado no BD
+            $entityManager = $this->getDoctrine()->getManager(); /* G.P - Linhas que adicionei para adicionar
+             o que foi cadastrado no banco de dados */
             $entityManager->persist($planos);
             $entityManager->flush();
         }

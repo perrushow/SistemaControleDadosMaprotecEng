@@ -46,7 +46,6 @@ class Especialidade
     public function setEsnome(string $esnome): self
     {
         $this->esnome = $esnome;
-
         return $this;
     }
 
@@ -64,7 +63,6 @@ class Especialidade
             $this->medico_idmedico[] = $medicoIdmedico;
             $medicoIdmedico->addEspecialidadeIdespecialidade($this);
         }
-
         return $this;
     }
 
@@ -74,7 +72,6 @@ class Especialidade
             $this->medico_idmedico->removeElement($medicoIdmedico);
             $medicoIdmedico->removeEspecialidadeIdespecialidade($this);
         }
-
         return $this;
     }
 }

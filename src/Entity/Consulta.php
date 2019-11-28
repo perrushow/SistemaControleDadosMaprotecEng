@@ -52,7 +52,6 @@ class Consulta
     public function setMedicoIdmedico(?Medico $medico_idmedico): self
     {
         $this->medico_idmedico = $medico_idmedico;
-
         return $this;
     }
 
@@ -64,7 +63,6 @@ class Consulta
     public function setClienteIdcliente(?Cliente $cliente_idcliente): self
     {
         $this->cliente_idcliente = $cliente_idcliente;
-
         return $this;
     }
 
@@ -76,7 +74,6 @@ class Consulta
     public function setDiaConsulta(\DateTime $dia_consulta): self
     {
         $this->dia_consulta = $dia_consulta;
-
         return $this;
     }
 
@@ -88,7 +85,6 @@ class Consulta
     public function setHorariosMedicoIdhorariosmedico(?HorariosMedico $horarios_medico_idhorariosmedico): self
     {
         $this->horarios_medico_idhorariosmedico = $horarios_medico_idhorariosmedico;
-
         return $this;
     }
 

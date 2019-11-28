@@ -11,7 +11,7 @@
                     <h1>Qual cliente gostaria de marcar Consulta?</h1>
                     <div class="login-form">
                         {{ form_start(form) }} {# antes de adicionar os campos do formulário você inicia um bloco de formulário
-                        e no final vc irá fechar esse bloco com form_end e o nome do form#}
+                        e no final você irá fechar esse bloco com form_end e o nome do form #}
                         <div class="form-group">
                             <label for="cliente_idcliente" class="placeholder">Cliente</label>
                             {{ form_widget(form.cliente_idcliente, {'attr': {'class': 'form-control input-border-bottom'}}) }}
@@ -27,4 +27,5 @@
         </div>
     </div>
 {% endblock %}
+
 {% block javascripts %}{% endblock %}

@@ -57,7 +57,6 @@ class Cliente
     public function setClinome(string $clinome): self
     {
         $this->clinome = $clinome;
-
         return $this;
     }
 
@@ -69,7 +68,6 @@ class Cliente
     public function setTelefone(string $telefone): self
     {
         $this->telefone = $telefone;
-
         return $this;
     }
 
@@ -86,7 +84,6 @@ class Cliente
         if (!$this->planos_idplanos->contains($planosIdplano)) {
             $this->planos_idplanos[] = $planosIdplano;
         }
-
         return $this;
     }
 
@@ -95,7 +92,6 @@ class Cliente
         if ($this->planos_idplanos->contains($planosIdplano)) {
             $this->planos_idplanos->removeElement($planosIdplano);
         }
-
         return $this;
     }
 
@@ -106,14 +102,12 @@ class Cliente
     {
         return $this->consulta_idconsulta;
     }
-
     public function addConsultaIdconsultum(Consulta $consultaIdconsultum): self
     {
         if (!$this->consulta_idconsulta->contains($consultaIdconsultum)) {
             $this->consulta_idconsulta[] = $consultaIdconsultum;
             $consultaIdconsultum->setClienteIdcliente($this);
         }
-
         return $this;
     }
 
@@ -126,7 +120,6 @@ class Cliente
                 $consultaIdconsultum->setClienteIdcliente(null);
             }
         }
-
         return $this;
     }
 }
