@@ -2,37 +2,28 @@
 
 {% block title %}Cadastrar Medico!{% endblock %}
 
-
-
-
-
 {% block content %}
-
 
     <div class="wrapper">
         <div class="container" style="margin-top: 50px">
             <form method="post" class="card">
                 <div class="card-body">
-
                     <h1>Cadastro de Medico</h1>
                     <div class="login-form">
-
-                        {{ form_start(form) }} {#  MANOEL antes de adicionar os campos do formulário você inicia um bloco de formulário
-                        e no final vc irá fechar esse bloco com form_end e o nome do form#}
+                        {{ form_start(form) }}
                         <div class="form-group">
                             <label for="menome" class="placeholder">Nome Do Medico</label>
                             {{ form_widget(form.menome, {'attr': {'class': 'form-control input-border-bottom'}}) }}
-
                         </div>
                         <div class="form-group">
                             <label for="especialidade_idespecialidade" class="placeholder">Especialidade</label>
                             {{ form_widget(form.especialidade_idespecialidade, {'attr': {'class': 'form-control input-border-bottom'}}) }}
                             {# para cada input do formuário você irá usar o form_widget com o nome do formulário que está no controller
-                                                        e o nome do campo que você pretende ler. A classe é copiada da documentação do atlantis
-                                                        dependendo de qual efeito de CSS você quer para o seu form#}
+                             e o nome do campo que você pretende ler. A classe é copiada da documentação do atlantis
+                             dependendo de qual efeito de CSS você quer para o seu form #}
                         </div>
-
-                        <div class="form-group"> {# essas condicoes sao para que sejam separados os horarios de acordo com os dias da semana! Peguei isso do Stackoverflow#}
+                        <div class="form-group"> {# essas condicoes sao para que sejam separados os horarios de acordo com
+                        os dias da semana! Peguei isso do Stackoverflow #}
                             {% for batch in form.horario_medico_idhorariomedico|batch(4) %}
                                 {% if i == 0 %}
                                 <label> Segunda </label>
@@ -51,17 +42,13 @@
                                 {% endif %}
                                 <div class="form-control input-border-bottom">
                                     {% for option in batch %}
-
                                             {{ form_label(option) }}
                                             {{ form_widget(option) }}
-
                                     {% endfor %}
                                 </div>
                                 {% set i = i + 1 %}
                             {% endfor %}
-
                         </div>
-
                         <div class="form-group">
                             {{ form_widget(form.confirme, {'attr': {'class': 'btn btn-primary'}}) }}
                         </div>
@@ -72,10 +59,6 @@
         </div>
     </div>
 
-
-
 {% endblock %}
-
-
 
 {% block javascripts %}{% endblock %}

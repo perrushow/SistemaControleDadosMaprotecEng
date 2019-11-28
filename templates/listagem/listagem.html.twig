@@ -18,16 +18,15 @@
                         </tr>
                         </thead>
                         <tbody>
-
                         {% for consulta in consultas %} {#loop para repetir para cada consulta existente#} 
                             <tr>
-                                <td>{{consulta.DiaConsulta.format('d/m/Y')}}</td> {#pega os dados pertinentes da consulta atraves dos metodos get#} 
+                                <td>{{consulta.DiaConsulta.format('d/m/Y')}}</td> {#pega os dados pertinentes da consulta atraves
+                                 dos metodos get#} 
                                 <td>{{consulta.getClienteIdcliente().getClinome()}}</td> {# listar Nome dos clientes #}
                                 <td>{{consulta.getMedicoIdmedico().getMenome()}}</td>    {# listar Nome dos medicos #}
                                 <td>{{consulta.getHorariosMedicoIdhorariosmedico().getHora()}}</td>       {# listar  Horarios de consultas #}
-                         <td> <a href="{{ path('consulta_show', {'id': consulta.id}) }}">show</a></td> {# Visualizar a consulta selecionada enviando o seu id para rota controler_view #} 
-                                
-
+                         <td> <a href="{{ path('consulta_show', {'id': consulta.id}) }}">show</a></td> {# Visualizar a consulta selecionada
+                        enviando o seu id para rota controler_view #}     
                             </tr>
                         {% endfor %}
 

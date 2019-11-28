@@ -47,6 +47,5 @@ class ClienteRepository extends ServiceEntityRepository
         ;
     }
     */
-
-
+    
 }

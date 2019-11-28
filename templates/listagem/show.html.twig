@@ -1,10 +1,5 @@
 {% extends 'base.html.twig' %}
 
-
-
-
-
-
 {% block content %}
 
     <div class="wrapper">
@@ -22,19 +17,15 @@
                         </tr>
                         </thead>
                         <tbody>
-
-                        
                             <tr>
-                                <td>{{consulta.DiaConsulta.format('d/m/Y')}}</td> {#pega os dados pertinentes da consulta atraves dos metodos get#}
+                                <td>{{consulta.DiaConsulta.format('d/m/Y')}}</td> {# pega os dados pertinentes da consulta atraves
+                                dos metodos get #}
                                 <td>{{consulta.getClienteIdcliente().getClinome()}}</td> {# listar o nome do cliente  #}
                                 <td>{{consulta.getMedicoIdmedico().getMenome()}}</td>  {# listar o nome do medico  #}
                                 <td>{{consulta.getHorariosMedicoIdhorariosmedico().getHora()}}</td>
                                <td> <a class="btn btn-primary btn-border fas fa-plus" role = "button" href="{{ path('consulta_delete', {'id': consulta.id}) }}">Desmarcar</a></td>
                                {# Botão que envia ao controlador o id da consulta para ser desmarcada #}
- 
                             </tr>
-                      
-
                         </tbody>
                     </table>
                 </div>
@@ -42,15 +33,3 @@
         </div>
     </div>
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-

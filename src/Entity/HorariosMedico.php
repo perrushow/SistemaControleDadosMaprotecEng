@@ -73,7 +73,6 @@ class HorariosMedico
     public function setHora(string $hora): self
     {
         $this->hora = $hora;
-
         return $this;
     }
 
@@ -96,7 +95,6 @@ class HorariosMedico
             $this->medico_idmedico[] = $medicoIdmedico;
             $medicoIdmedico->addHorarioMedicoIdhorariomedico($this);
         }
-
         return $this;
     }
 
@@ -106,7 +104,6 @@ class HorariosMedico
             $this->medico_idmedico->removeElement($medicoIdmedico);
             $medicoIdmedico->removeHorarioMedicoIdhorariomedico($this);
         }
-
         return $this;
     }
 
@@ -124,7 +121,6 @@ class HorariosMedico
             $this->consulta_idconsulta[] = $consultaIdconsultum;
             $consultaIdconsultum->setHorariosMedicoIdhorariosmedico($this);
         }
-
         return $this;
     }
 
@@ -132,12 +128,10 @@ class HorariosMedico
     {
         if ($this->consulta_idconsulta->contains($consultaIdconsultum)) {
             $this->consulta_idconsulta->removeElement($consultaIdconsultum);
-            // set the owning side to null (unless already changed)
             if ($consultaIdconsultum->getHorariosMedicoIdhorariosmedico() === $this) {
                 $consultaIdconsultum->setHorariosMedicoIdhorariosmedico(null);
             }
         }
-
         return $this;
     }
 }
