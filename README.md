@@ -1,4 +1,4 @@
-# PA2.SENAI
+# Sistema de Cadastros e pré visualização de dados com hierarquia de acessos.
 Bom dia, seguem instruções.
 
 Para inicializar o servidor (rodar a aplicação)
